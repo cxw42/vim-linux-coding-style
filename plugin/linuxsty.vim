@@ -13,6 +13,9 @@
 "
 "   let g:linuxsty_patterns = [ "/linux/", "/kernel/" ]
 
+let s:save_cpo = &cpo
+set cpo&vim
+
 if exists("g:loaded_linuxsty")
     finish
 endif
@@ -24,6 +27,7 @@ augroup linuxsty
     autocmd!
 
     autocmd FileType c,cpp call s:LinuxConfigure()
+    " TODO use linuxsty_patterns for the following as well.
     autocmd FileType diff setlocal ts=8
     autocmd FileType kconfig setlocal ts=8 sw=8 sts=8 noet
     autocmd FileType dts setlocal ts=8 sw=8 sts=8 noet
@@ -87,5 +91,10 @@ function s:LinuxHighlighting()
     autocmd InsertEnter * match LinuxError /\s\+\%#\@<!$/
     autocmd InsertLeave * match LinuxError /\s\+$/
 endfunction
+
+command! KernelDocFunction call vim_linux_coding_style#KernelDocFunction()
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
 
 " vim: ts=4 et sw=4

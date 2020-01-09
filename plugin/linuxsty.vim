@@ -33,7 +33,7 @@ augroup linuxsty
     autocmd FileType dts setlocal ts=8 sw=8 sts=8 noet
 augroup END
 
-function s:LinuxConfigure()
+function! s:LinuxConfigure()
     let apply_style = 0
 
     if exists("g:linuxsty_patterns")
@@ -61,7 +61,7 @@ function! s:LinuxCodingStyle()
     call s:LinuxHighlighting()
 endfunction
 
-function s:LinuxFormatting()
+function! s:LinuxFormatting()
     setlocal tabstop=8
     setlocal shiftwidth=8
     setlocal softtabstop=8
@@ -72,14 +72,14 @@ function s:LinuxFormatting()
     setlocal cinoptions=:0,l1,t0,g0,(0
 endfunction
 
-function s:LinuxKeywords()
+function! s:LinuxKeywords()
     syn keyword cOperator likely unlikely
     syn keyword cType u8 u16 u32 u64 s8 s16 s32 s64
     syn keyword cType __u8 __u16 __u32 __u64 __s8 __s16 __s32 __s64
 endfunction
 
-function s:LinuxHighlighting()
-    highlight default link LinuxError ErrorMsg
+function! s:LinuxHighlighting()
+    highlight default link LinuxError Question  "ErrorMsg
 
     syn match LinuxError / \+\ze\t/     " spaces before tab
     syn match LinuxError /\%>80v[^()\{\}\[\]<>]\+/ " virtual column 81 and more

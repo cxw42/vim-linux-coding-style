@@ -82,7 +82,7 @@ function! s:LinuxHighlighting()
     highlight default link LinuxError Question  "ErrorMsg
 
     syn match LinuxError / \+\ze\t/     " spaces before tab
-    syn match LinuxError /\%>80v[^()\{\}\[\]<>]\+/ " virtual column 81 and more
+    "syn match LinuxError /\%>80v[^()\{\}\[\]<>]\+/ " virtual column 81 and more
 
     " Highlight trailing whitespace, unless we're in insert mode and the
     " cursor's placed right after the whitespace. This prevents us from having
